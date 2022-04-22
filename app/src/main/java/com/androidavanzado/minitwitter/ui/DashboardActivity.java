@@ -36,8 +36,6 @@ public class DashboardActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        String token = SharedPreferenceManager.getStringValue(Constantes.PREF_USER_TOKEN);
-        Toast.makeText(this, "Token: " + Ztoken, Toast.LENGTH_LONG).show();
     }
 
 }
