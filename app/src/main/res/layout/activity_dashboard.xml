@@ -56,7 +56,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <FrameLayout
+        <fragment
             android:id="@+id/nav_host_fragment_activity_dashboard"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
