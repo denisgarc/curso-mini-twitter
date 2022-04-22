@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.androidavanzado.minitwitter.placeholder.PlaceholderContent;
 import com.androidavanzado.minitwitter.retrofit.response.Tweet;
 
 import java.util.List;
@@ -61,7 +60,7 @@ public class TweetListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_tweet_list_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_tweet_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
