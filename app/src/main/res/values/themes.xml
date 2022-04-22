@@ -2,16 +2,25 @@
     <!-- Base application theme. -->
     <style name="Theme.MiniTwitter" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/colorAzul</item>
         <item name="colorPrimaryVariant">@color/gris</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/colorAzulDark</item>
         <item name="colorSecondaryVariant">@color/colorAzul</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
 
     </style>
+
+    <style name="Theme.MiniTwitter.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MiniTwitter.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MiniTwitter.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

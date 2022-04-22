@@ -3,7 +3,7 @@
 
     <style name="Theme.MiniTwitter" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/colorAzul</item>
         <item name="colorPrimaryVariant">@color/gris</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
