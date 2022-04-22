@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidavanzado.minitwitter.R;
+import com.androidavanzado.minitwitter.common.Constantes;
+import com.androidavanzado.minitwitter.common.SharedPreferenceManager;
 import com.androidavanzado.minitwitter.retrofit.MiniTwitterClient;
 import com.androidavanzado.minitwitter.retrofit.MiniTwitterService;
 import com.androidavanzado.minitwitter.retrofit.request.RequestLogin;
@@ -89,6 +91,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void onResponse(Call<ResponseAuth> call, Response<ResponseAuth> response) {
                     if(response.isSuccessful()){
                         Toast.makeText(MainActivity.this, "Sesion iniciada correctamente", Toast.LENGTH_LONG).show();
+
+                        // Se almacena sesion de usuario
+                        SharedPreferenceManager.setStringValue(Constantes.PREF_USER_TOKEN, response.body().getToken());
+                        SharedPreferenceManager.setStringValue(Constantes.PREF_USER_NAME, response.body().getUsername());
+                        SharedPreferenceManager.setStringValue(Constantes.PREF_USER_EMAIL, response.body().getEmail());
+                        SharedPreferenceManager.setStringValue(Constantes.PREF_USER_PHOTO, response.body().getPhotoUrl());
+                        SharedPreferenceManager.setStringValue(Constantes.PREF_USER_CREATE, response.body().getCreated());
+                        SharedPreferenceManager.setBooleanValue(Constantes.PREF_USER_ACTIVE, response.body().getActive());
+
                         Intent i = new Intent(MainActivity.this, DashboardActivity.class);
                         startActivity(i);
 
