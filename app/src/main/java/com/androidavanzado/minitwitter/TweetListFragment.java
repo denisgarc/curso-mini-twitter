@@ -38,8 +38,7 @@ public class TweetListFragment extends Fragment {
 
     List<Tweet> tweetList;
 
-    AuthTwitterService authTwitterService;
-    AuthTwitterClient authTwitterClient;
+
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -82,36 +81,15 @@ public class TweetListFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            retrofitInit();
+            // retrofitInit();
             loadTweetData();
         }
         return view;
     }
 
-    private void retrofitInit() {
-        authTwitterClient = AuthTwitterClient.getInstance();
-        authTwitterService = authTwitterClient.getAuthTwitterService();
-    }
 
     private void loadTweetData() {
-        Call<List<Tweet>> call = authTwitterService.getAllTweets();
-        call.enqueue(new Callback<List<Tweet>>() {
-            @Override
-            public void onResponse(Call<List<Tweet>> call, Response<List<Tweet>> response) {
-                if(response.isSuccessful()) {
-                    tweetList = response.body();
-                    tweetRecyclerViewAdapter = new MyTweetRecyclerViewAdapter(getActivity(), tweetList);
-                    recyclerView.setAdapter(tweetRecyclerViewAdapter);
-                } else {
-                    Toast.makeText(getActivity(), "Algo anda mal", Toast.LENGTH_SHORT).show();
-                }
-            }
 
-            @Override
-            public void onFailure(Call<List<Tweet>> call, Throwable t) {
-                Toast.makeText(getActivity(), "Error en la conexion", Toast.LENGTH_SHORT).show();
-            }
-        });
 
 
     }
