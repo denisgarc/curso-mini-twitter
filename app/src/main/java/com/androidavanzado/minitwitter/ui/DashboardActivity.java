@@ -5,6 +5,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.androidavanzado.minitwitter.R;
+import com.androidavanzado.minitwitter.TweetListFragment;
 import com.androidavanzado.minitwitter.databinding.ActivityDashboardBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -18,7 +19,7 @@ import androidx.navigation.ui.NavigationUI;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationBarView.OnItemReselectedListener {
 
-    private ActivityDashboardBinding binding;
+    // private ActivityDashboardBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationBa
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+        /*getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.nav_host_fragment_activity_dashboard, new TweetListFragment())
+                .commit();*/
     }
 
     @Override

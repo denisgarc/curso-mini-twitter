@@ -14,4 +14,5 @@ public interface MiniTwitterService {
 
     @POST("auth/signup")
     Call<ResponseAuth> doSigUp(@Body RequestSignUp requestSignUp);
+
 }
