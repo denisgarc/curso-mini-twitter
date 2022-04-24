@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.androidavanzado.minitwitter.data.TweetViewModel;
 import com.androidavanzado.minitwitter.retrofit.AuthTwitterClient;
 import com.androidavanzado.minitwitter.retrofit.AuthTwitterService;
 import com.androidavanzado.minitwitter.retrofit.response.Tweet;
@@ -37,6 +40,7 @@ public class TweetListFragment extends Fragment {
     MyTweetRecyclerViewAdapter tweetRecyclerViewAdapter;
 
     List<Tweet> tweetList;
+    TweetViewModel tweetViewModel;
 
 
 
@@ -60,6 +64,9 @@ public class TweetListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        tweetViewModel = new ViewModelProvider(getActivity())
+                    .get(TweetViewModel.class);
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
@@ -89,8 +96,14 @@ public class TweetListFragment extends Fragment {
 
 
     private void loadTweetData() {
-
-
-
+        tweetViewModel.getTweets().observe(getActivity(), new Observer<List<Tweet>>() {
+            @Override
+            public void onChanged(List<Tweet> tweets) {
+                tweetList = tweets;
+                tweetRecyclerViewAdapter.setData(tweetList);
+            }
+        });
+        tweetRecyclerViewAdapter = new MyTweetRecyclerViewAdapter(getActivity(), tweetList);
+        recyclerView.setAdapter(tweetRecyclerViewAdapter);
     }
 }
